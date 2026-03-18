@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 240 10% 4%;
+    --foreground: 0 0% 95%;
+
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 180 100% 50%;
+    --primary-foreground: 240 10% 4%;
+
+    --secondary: 240 10% 12%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 240 10% 12%;
+    --muted-foreground: 240 5% 55%;
+
+    --accent: 280 100% 70%;
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 10% 15%;
+    --input: 240 10% 15%;
+    --ring: 180 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* Gradient colors for shimmer effect */
+    --shimmer-start: 180 100% 50%;
+    --shimmer-mid: 280 100% 70%;
+    --shimmer-end: 320 100% 60%;
+
+    --sidebar-background: 240 10% 6%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 180 100% 50%;
+    --sidebar-primary-foreground: 240 10% 4%;
+    --sidebar-accent: 240 10% 12%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 240 10% 15%;
+    --sidebar-ring: 180 100% 50%;
+  }
+
+  .dark {
+    --background: 240 10% 4%;
+    --foreground: 0 0% 95%;
+
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 180 100% 50%;
+    --primary-foreground: 240 10% 4%;
+
+    --secondary: 240 10% 12%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 240 10% 12%;
+    --muted-foreground: 240 5% 55%;
+
+    --accent: 280 100% 70%;
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 10% 15%;
+    --input: 240 10% 15%;
+    --ring: 180 100% 50%;
+    --sidebar-background: 240 10% 6%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 180 100% 50%;
+    --sidebar-primary-foreground: 240 10% 4%;
+    --sidebar-accent: 240 10% 12%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 240 10% 15%;
+    --sidebar-ring: 180 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* M&M Card CSS custom properties */
+:root {
+  --mm-blue: #2980B9;
+  --mm-amber: #D4842A;
+  --mm-green: #4CAF50;
+  --mm-dark: #1A1A1A;
+  --mm-frame: #252525;
+  --mm-class-color: #4CAF50;
+}
+
+.mm-card {
+  background: linear-gradient(135deg, #1A1A1A 0%, #222222 50%, #1E1E1E 100%);
+  border: 2px solid var(--mm-class-color);
+  box-shadow: 0 0 12px var(--mm-class-color), inset 0 0 30px rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;
+  width: 500px;
+  height: 700px;
+  border-radius: 8px;
+  font-family: 'Share Tech Mono', monospace;
+  color: #E0E0E0;
+  display: flex;
+  flex-direction: column;
+}
+
+.mm-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(255,255,255,0.01) 30px, rgba(255,255,255,0.01) 31px),
+    repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(255,255,255,0.01) 30px, rgba(255,255,255,0.01) 31px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mm-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.mm-name-banner {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: linear-gradient(90deg, rgba(0,0,0,0.8), rgba(0,0,0,0.4), rgba(0,0,0,0.8));
+  border-bottom: 1px solid var(--mm-class-color);
+  text-shadow: 0 0 10px var(--mm-class-color);
+  color: #FFFFFF;
+  padding: 10px 16px;
+}
+
+.mm-class-badge {
+  background: var(--mm-class-color);
+  color: #000;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.mm-section-header {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--mm-class-color);
+  border-bottom: 1px solid var(--mm-class-color);
+  padding-bottom: 2px;
+  margin-bottom: 6px;
+}
+
+.mm-stat-box {
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  padding: 6px;
+  text-align: center;
+}
+
+.mm-attack-line {
+  background: rgba(0,0,0,0.3);
+  border-left: 2px solid var(--mm-class-color);
+  padding: 4px 8px;
+  margin-bottom: 4px;
+  border-radius: 0 4px 4px 0;
+  font-size: 11px;
+}
+
+.mm-footer {
+  background: var(--mm-class-color);
+  color: #000;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hp-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease, background-color 0.5s ease;
+}
