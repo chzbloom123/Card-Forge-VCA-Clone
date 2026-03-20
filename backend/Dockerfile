@@ -3,6 +3,6 @@ WORKDIR /app
 COPY package.json bun.lockb* ./
 RUN bun install --frozen-lockfile
 COPY . .
-RUN DATABASE_URL="postgresql://placeholder:placeholder@localhost:5432/placeholder" bunx prisma generate
+RUN DATABASE_URL="postgresql://placeholder:placeholder@localhost:5432/placeholder" bunx prisma generate --schema=./prisma/prisma/schema.prisma
 EXPOSE 3000
 CMD ["bun", "run", "--smol", "src/index.ts"]
