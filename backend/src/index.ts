@@ -11,7 +11,8 @@ const app = new Hono();
 const allowed = [
   /^http:\/\/localhost(:\d+)?$/,
   /^http:\/\/127\.0\.0\.1(:\d+)?$/,
-  /^https:\/\/[a-z0-9-]+\.up\.railway\.app$/,
+  /^https:\/\/[a-z0-9-]+\.up\.railway\.app$/,,
+  /^https:\/\/mmc-card-forge-app\.netlify\.app$/
 ];
 
 app.use(
